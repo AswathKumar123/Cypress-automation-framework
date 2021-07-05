@@ -1,0 +1,16 @@
+{
+  "name": "cypress-automation-framework",
+  "version": "1.0.0",
+  "description": "Cypress Automation FrameWork",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aswath Kumar Kulasekara Pandian",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
+    "cypress": "^4.12.1",
+    "cypress-plugin-tab": "^1.0.5"
+  }
+}
