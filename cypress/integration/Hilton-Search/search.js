@@ -17,7 +17,7 @@ describe("Verify user able to enter location and search via Hilton brand page", 
         cy.get('[data-testid="search-cta-btn"]').click();
     })
     
-    it.only("Should be able to search a suuccesful location for property using mobile", () => {
+    it("Should be able to search a suuccesful location for property using mobile", () => {
         cy.viewport('iphone-x');
         cy.visit("https://www.hilton.com/en/");
        // cy.get('[class="btn btn-primary btn-lg w-full"]').click();
