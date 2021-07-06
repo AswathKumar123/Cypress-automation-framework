@@ -2,6 +2,7 @@
 
 
 describe("Verify user able to enter location and search via Hilton brand page", () => {
+    var assert = chai.assert;
     it("Should be able to search a successful location for property", () => {
         //Cypress Code   
         cy.visit("https://www.hilton.com/en/");
@@ -11,17 +12,24 @@ describe("Verify user able to enter location and search via Hilton brand page", 
            var c=  ele.wait(1000).tab();
         }
         c.click(); 
-    
-        
     });
+    
 
     it.only("Should be able to search a succesful location for property using mobile", () => {
         cy.viewport('iphone-x');
         cy.visit("https://www.hilton.com/en/");
-        cy.contains('Locations').click();
-        cy.get('#location-tab-Asia').click(); 
+        cy.get('[label="Locations"]').click();
+        //cy.get('#location-tab-Asia').click(); 
+        cy.xpath('//button[contains(@id,"location-tab-Asia")]').click(); 
         cy.findAllByText("India").click();
-    
+        var proptitle = cy.get('[class="font-headline text-xl"]');
+        proptitle.should('contain', 'Hotels in India');
+        proptitle.should('have.lengthOf.at.least', 1);
+        var updatebtn = cy.get('[type="submit"]');
+        updatebtn.should('be.visible')
+        updatebtn.should('be.enabled')
+        cy.get('#search-form-query').should('have.value', 'India, IN')
+        cy.get('#search-form-query').should('have.attr', 'name', 'query')
     });
     
     
@@ -32,6 +40,5 @@ describe("Verify user able to enter location and search via Hilton brand page", 
         cy.get('#search-form-query').wait(1000).tab().tab().click();
     
     });
-    
     
     })
