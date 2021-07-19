@@ -6,6 +6,9 @@ describe("Verify user able to enter location and search via Hilton brand page", 
         //Cypress Code
         
         cy.visit("https://www.hilton.com/en/");
+        cy.document().should('have.prop', 'charset').and('eq', 'UTF-8');
+        cy.title().should('include', 'Hotels by Hilton - Book the Best Rates Across All Brands');
+        cy.url().should('include', 'hilton');
         cy.get('#search-form-query').type('Dallas').wait(1000).type('{downarrow}{downarrow}{enter}');
         cy.get('[data-testid="search-cta-btn"]').click();
     });

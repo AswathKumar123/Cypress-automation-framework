@@ -15,7 +15,7 @@ describe("Verify user able to enter location and search via Hilton brand page", 
     });
     
 
-    it.only("Should be able to search a succesful location for property using mobile", () => {
+    it("Should be able to search a succesful location for property using mobile", () => {
         cy.viewport('iphone-x');
         cy.visit("https://www.hilton.com/en/");
         cy.get('[label="Locations"]').click();
@@ -39,6 +39,16 @@ describe("Verify user able to enter location and search via Hilton brand page", 
         cy.contains('Locations').click();
         cy.get('#search-form-query').wait(1000).tab().tab().click();
     
+    });
+
+    it.only("Should be able to click a random widget location from category page using mobile", () => {
+        cy.viewport('iphone-x');
+        cy.visit("https://www.hilton.com/en/");
+        cy.contains('Locations').click();
+        cy.wait(2000);
+        let i=Math.floor((Math.random() *7) +0);
+        cy.get('.text-sm').find('.relative').eq(i).click();
+        
     });
     
     })
